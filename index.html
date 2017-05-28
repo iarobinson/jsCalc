@@ -2,14 +2,12 @@
   <link rel="stylesheet" href="css/bootstrap.css">
   <script src="js/jquery-3.2.1.min.js"></script>
   <style>
-    body {
-      margin: 20px 20px 20px 20px;
-    }
 
     table {
       table-layout: fixed;
-      width: 100%;
-      height: 100%;
+      margin: 5% 5% 5% 5%;
+      width: 90%;
+      height: 90%;
     }
 
     button {
@@ -26,9 +24,8 @@
 
 <body>
   <table>
-    <tr>
-      <span id="display">span</span>
-      <h1 align="right" id="display">testing</h1>
+    <tr rowSpan="3">
+      <th><span id="display">display here</span></th>
     </tr>
     <tr>
       <th><button id='one' type="button" class="btn btn-primary btn-lg">1</button></th>
@@ -57,10 +54,11 @@
   </table>
 
   <script> // Calculator brain
-  var calculatorValue = 0;
+  var calculatorValue, currentNum, previousNum;
+
   $("button#one.btn.btn-primary.btn-lg").on("click", function() {
     var message = $("<p>GOT IT!</p>");
-    $('button#one.btn.btn-primary.btn-lg').append(message);
+    $('span#display').append(message);
   });
   </script>
 
