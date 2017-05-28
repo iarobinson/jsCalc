@@ -1,6 +1,6 @@
 ## jsCalc
 
-#JavaScript Calculator
+### JavaScript Calculator ###
 
 This will be an elegant responsive calculator.
 
