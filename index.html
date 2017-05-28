@@ -24,9 +24,7 @@
 
 <body>
   <table>
-    <tr rowSpan="3">
-      <th><span id="display">display here</span></th>
-    </tr>
+    <th colspan="4" id="display"><h1 align="right">DISPLAY GOES HERE BECAUSE ITS AWESOME</h1></th>
     <tr>
       <th><button id='one' type="button" class="btn btn-primary btn-lg">1</button></th>
       <th><button id='two' type="button" class="btn btn-primary btn-lg">2</button></th>
@@ -46,20 +44,31 @@
       <th><button type="button" class="btn btn-primary btn-lg">multiply</button></th>
     </tr>
     <tr>
-      <th><button type="button" class="btn btn-primary btn-lg">0</button></th>
-      <th><button type="button" class="btn btn-primary btn-lg">clear</button></th>
-      <th><button type="button" class="btn btn-primary btn-lg">clear all</button></th>
+      <th colspan="2"><button type="button" class="btn btn-primary btn-lg">0</button></th>
+      <th><button type="button" class="btn btn-primary btn-lg">.</button></th>
       <th><button type="button" class="btn btn-primary btn-lg">divide</button></th>
+    </tr>
+    <tr>
+      <th colspan="2"><button type="button" class="btn btn-primary btn-lg">clear</button></th>
+      <th colspan="2"><button type="button" class="btn btn-primary btn-lg">clear all</button></th>
     </tr>
   </table>
 
   <script> // Calculator brain
-  var calculatorValue, currentNum, previousNum;
+  var calculatorValue, currentNum = "", previousNum = "";
+  var index = 0;
 
-  $("button#one.btn.btn-primary.btn-lg").on("click", function() {
-    var message = $("<p>GOT IT!</p>");
-    $('span#display').append(message);
+  $(".btn").on("click", function() {
+    var buttonPressed = $(this).html();
+    currentNum += buttonPressed;
+    console.log(currentNum, " <- currentNum");
+    updateDisplay(currentNum);
   });
+
+  function updateDisplay(num) {
+    $('th#display').replaceWith("" + currentNum);
+  }
+
   </script>
 
 </body>
