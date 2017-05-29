@@ -1,85 +1,77 @@
 
 <html>
-<head>
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <script src="js/jquery-3.2.1.min.js"></script>
-  <style>
+  <head>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/calcBrain.js"></script>
+    <style>
 
-    table {
-      table-layout: fixed;
-      margin: 5% 5% 5% 5%;
-      width: 90%;
-      height: 90%;
-    }
+      table {
+        table-layout: fixed;
+        margin: 5% 5% 5% 5%;
+        width: 90%;
+        height: 90%;
+      }
 
-    button {
-      width: 100%;
-      height: 100%;
-    }
+      button {
+        width: 100%;
+        height: 100%;
+      }
 
-    #display {
-      background-color: #337ab7;
-      color: #fff;
-      width: 100%;
-      height: 20%;
-      font-size: 60px;
-      padding: 6px 12px;
-      line-height: 1.42857143;
-      border-radius: 0px;
-      font-weight: normal;
-    }
+      #display {
+        background-color: #337ab7;
+        color: #fff;
+        width: 100%;
+        height: 20%;
+        font-size: 60px;
+        padding: 6px 12px;
+        line-height: 1.42857143;
+        border-radius: 0px;
+        font-weight: normal;
+      }
 
-  </style>
-</head>
+    </style>
+  </head>
 
-<body>
-  <table>
-    <th colspan="4" id="display"></th>
-    <tr>
-      <th><button id='one' type="button" class="btn btn-primary btn-lg">1</button></th>
-      <th><button id='two' type="button" class="btn btn-primary btn-lg">2</button></th>
-      <th><button type="button" class="btn btn-primary btn-lg">3</button></th>
-      <th><button type="button" class="btn btn-primary btn-lg">add</button></th>
-    </tr>
-    <tr>
-      <th><button type="button" class="btn btn-primary btn-lg">4</button></th>
-      <th><button type="button" class="btn btn-primary btn-lg">5</button></th>
-      <th><button type="button" class="btn btn-primary btn-lg">6</button></th>
-      <th><button type="button" class="btn btn-primary btn-lg">subtract</button></th>
-    </tr>
-    <tr>
-      <th><button type="button" class="btn btn-primary btn-lg">7</button></th>
-      <th><button type="button" class="btn btn-primary btn-lg">8</button></th>
-      <th><button type="button" class="btn btn-primary btn-lg">9</button></th>
-      <th><button type="button" class="btn btn-primary btn-lg">multiply</button></th>
-    </tr>
-    <tr>
-      <th colspan="2"><button type="button" class="btn btn-primary btn-lg">0</button></th>
-      <th><button type="button" class="btn btn-primary btn-lg">.</button></th>
-      <th><button type="button" class="btn btn-primary btn-lg">divide</button></th>
-    </tr>
-    <tr>
-      <th colspan="3"><button type="button" class="btn btn-primary btn-lg">clear</button></th>
-      <th ><button type="button" class="btn btn-primary btn-lg">equals</button></th>
-    </tr>
-  </table>
+  <body>
+    <table>
+      <th colspan="4" id="display"></th>
+      <tr>
+        <th><button id='one' type="button" class="btn btn-primary btn-lg">1</button></th>
+        <th><button id='two' type="button" class="btn btn-primary btn-lg">2</button></th>
+        <th><button type="button" class="btn btn-primary btn-lg">3</button></th>
+        <th><button type="button" class="btn btn-primary btn-lg">add</button></th>
+      </tr>
+      <tr>
+        <th><button type="button" class="btn btn-primary btn-lg">4</button></th>
+        <th><button type="button" class="btn btn-primary btn-lg">5</button></th>
+        <th><button type="button" class="btn btn-primary btn-lg">6</button></th>
+        <th><button type="button" class="btn btn-primary btn-lg">subtract</button></th>
+      </tr>
+      <tr>
+        <th><button type="button" class="btn btn-primary btn-lg">7</button></th>
+        <th><button type="button" class="btn btn-primary btn-lg">8</button></th>
+        <th><button type="button" class="btn btn-primary btn-lg">9</button></th>
+        <th><button type="button" class="btn btn-primary btn-lg">multiply</button></th>
+      </tr>
+      <tr>
+        <th colspan="2"><button type="button" class="btn btn-primary btn-lg">0</button></th>
+        <th><button type="button" class="btn btn-primary btn-lg">.</button></th>
+        <th><button type="button" class="btn btn-primary btn-lg">divide</button></th>
+      </tr>
+      <tr>
+        <th colspan="3"><button type="button" class="btn btn-primary btn-lg">clear</button></th>
+        <th ><button type="button" class="btn btn-primary btn-lg">equals</button></th>
+      </tr>
+    </table>
 
-  <script> // Calculator brain
-  var calculatorValue, currentNum = "", previousNum = "";
-  var index = 0;
+    <script>
+    $(".btn").on("click", function() {
+      var buttonPressed = $(this).html();
+      currentNum += buttonPressed;
+      updateDisplay(currentNum);
+    });
+    </script>
 
-  $(".btn").on("click", function() {
-    var buttonPressed = $(this).html();
-    currentNum += buttonPressed;
-    console.log(currentNum, " <- currentNum");
-    updateDisplay(currentNum);
-  });
-
-  function updateDisplay(num) {
-    $('th#display').replaceWith('<th colspan="4" id="display"><p align="right">' + currentNum + '</p></th>');
-  }
-
-  </script>
-
-</body>
+  </body>
 </html>
