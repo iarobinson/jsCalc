@@ -71,7 +71,7 @@
       var buttonPressed = $(this).html();
       // console.log(buttonPressed, "<-buttonPressed");
       // console.log(stringyNum, "<- stringyNum");
-
+      
       if (numbers.indexOf(buttonPressed) !== -1) {
         stringyNum += buttonPressed;
         updateDisplay(stringyNum);
@@ -79,7 +79,7 @@
         stringyNum = '';
         updateDisplay(stringyNum);
       } else {
-        doSomeMath(stringyNum, operator);
+        doSomeMath(stringyNum, buttonPressed);
       }
     });
 
