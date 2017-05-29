@@ -1,5 +1,5 @@
 
-var stringyNum = '', previousNum = '';
+var stringyNum = '', previousNum = '', operand = '';
 var numbers = "1234567890".split("");
 var operandSelected = ['add', 'subtract', 'multiply', 'divide', 'equals'];
 
@@ -8,20 +8,60 @@ function updateDisplay(stringyNum) {
 }
 
 function runTheNumbers(buttonPressed) {
+
   if (isNum(buttonPressed)) {
     stringyNum += buttonPressed;
     updateDisplay(stringyNum);
   } else if (buttonPressed === 'clear') {
     stringyNum = '';
+    previousNum = '';
+    operand = '';
     updateDisplay(stringyNum);
-  } else if (decimalOK()) {
+  } else if (buttonPressed === '.' && decimalOK()) {
     stringyNum += buttonPressed;
     updateDisplay(stringyNum);
-  } else if (isOperand(buttonPressed)) {
-    console.log("Do some math");
+  } else if (isOperand(buttonPressed) && previousNum === '') {
+    updateDisplay(stringyNum);
+    prepCalc(buttonPressed);
+  } else if (buttonPressed === 'equals') {
+    stringyNum = runCalc();
+    previousNum = '';
+    operand = '';
+    updateDisplay(stringyNum);
   } else {
-    console.log("nothing should be done")
+    updateDisplay(stringyNum);
   }
+}
+
+function runCalc() {
+  var result;
+  if (operand === 'add') {
+    result = parseFloat(previousNum) + parseFloat(stringyNum);
+    return result.toString();
+  } else if (operand === 'subtract') {
+    result = parseFloat(previousNum) - parseFloat(stringyNum);
+    return result.toString();
+  } else if (operand === 'multiply') {
+    result = parseFloat(previousNum) * parseFloat(stringyNum);
+    return result.toString();
+  } else if (operand === 'divide') {
+    result = parseFloat(previousNum) / parseFloat(stringyNum);
+    return result.toString();
+  }
+}
+
+function prepCalc(op) {
+  previousNum = stringyNum;
+  operand = op;
+  stringyNum = '';
+  updateDisplay(stringyNum);
+}
+
+function isOperand(buttonPressed) {
+  if (operandSelected.indexOf(buttonPressed) === -1) {
+    return false;
+  }
+  return true;
 }
 
 function isNum(buttonPressed) {
@@ -33,32 +73,4 @@ function decimalOK() {
     return true;
   }
   return false;
-}
-
-function isOperand(buttonPressed) {
-  if (operandSelected.indexOf(buttonPressed) === -1) {
-    return false;
-  }
-  return true;
-}
-
-function stringIt(stringyNum, buttonPressed) {
-  stringyNum += buttonPressed;
-  updateDisplay(stringyNum);
-}
-
-function add(previousNum, stringyNum) {
-  return parseFloat(previousNum) + parseFloat(stringyNum)
-}
-
-function subtract(previousNum, stringyNum) {
-  return parseFloat(previousNum) - parseFloat(stringyNum)
-}
-
-function divide(previousNum, stringyNum) {
-  return parseFloat(previousNum) / parseFloat(stringyNum)
-}
-
-function multiply(previousNum, stringyNum) {
-  return parseFloat(previousNum) * parseFloat(stringyNum)
 }
