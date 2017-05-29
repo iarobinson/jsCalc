@@ -1,22 +1,46 @@
 
-var stringyNum = '', calculatorValue, previousNum = '';
-var numbers = "1234567890.".split("");
+var stringyNum = '', previousNum = '';
+var numbers = "1234567890".split("");
+var operandSelected = ['add', 'subtract', 'multiply', 'divide', 'equals'];
 
 function updateDisplay(stringyNum) {
-  $('th#display').replaceWith('<th colspan="4" id="display"><p align="right">' + stringyNum.substring(0,20) + '</p></th>');
+  $('th#display').replaceWith('<th colspan="4" id="display"><p align="right">' + stringyNum.substring(0, 10) + '</p></th>');
 }
 
-function doSomeMath(numString, op) {
-  if (previousNum === '') {
-    previousNum = numString;
+function runTheNumbers(buttonPressed) {
+  if (isNum(buttonPressed)) {
+    stringyNum += buttonPressed;
+    updateDisplay(stringyNum);
+  } else if (buttonPressed === 'clear') {
+    stringyNum = '';
+    updateDisplay(stringyNum);
+  } else if (decimalOK()) {
+    stringyNum += buttonPressed;
+    updateDisplay(stringyNum);
+  } else if (isOperand(buttonPressed)) {
+    console.log("Do some math");
   } else {
-    if (op === "add") {
-      var result = add(previousNum, stringyNum);
-      return updateDisplay(result);
-    }
+    console.log("nothing should be done")
   }
 }
 
+function isNum(buttonPressed) {
+  return numbers.indexOf(buttonPressed) > -1
+}
+
+function decimalOK() {
+  if (stringyNum.indexOf('.') === -1) {
+    return true;
+  }
+  return false;
+}
+
+function isOperand(buttonPressed) {
+  if (operandSelected.indexOf(buttonPressed) === -1) {
+    return false;
+  }
+  return true;
+}
 
 function stringIt(stringyNum, buttonPressed) {
   stringyNum += buttonPressed;

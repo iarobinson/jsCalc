@@ -67,20 +67,11 @@
 
     <script>
 
-    $(".btn").on("click", function() {
-      var buttonPressed = $(this).html();
-      // console.log(buttonPressed, "<-buttonPressed");
-      // console.log(stringyNum, "<- stringyNum");
-      
-      if (numbers.indexOf(buttonPressed) !== -1) {
-        stringyNum += buttonPressed;
-        updateDisplay(stringyNum);
-      } else if (buttonPressed === 'clear') {
-        stringyNum = '';
-        updateDisplay(stringyNum);
-      } else {
-        doSomeMath(stringyNum, buttonPressed);
-      }
+    $(document).ready(function() {
+      $(".btn").on("click", function() {
+        var buttonPressed = $(this).html();
+        runTheNumbers(buttonPressed);
+      });
     });
 
     </script>
