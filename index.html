@@ -68,8 +68,16 @@
     <script>
     $(".btn").on("click", function() {
       var buttonPressed = $(this).html();
-      stringyNum += buttonPressed;
-      updateDisplay(stringyNum);
+
+      if (numbers.indexOf(buttonPressed) !== -1 && stringyNum.split('.').length <= 2) {
+        stringyNum += buttonPressed;
+        updateDisplay(stringyNum);
+      } else if (buttonPressed === 'clear') {
+        stringyNum = '';
+        updateDisplay(stringyNum);
+      } else {
+        console.log('do some math');
+      }
     });
     </script>
   </body>
