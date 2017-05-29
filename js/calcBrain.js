@@ -1,7 +1,11 @@
-// 
+//
 
-var calculatorValue, currentNum = "", previousNum = "";
+var calculatorValue, stringyNum = "", previousNum = "";
 
 function updateDisplay(num) {
-  $('th#display').replaceWith('<th colspan="4" id="display"><p align="right">' + currentNum + '</p></th>');
+  // console.log(num, " <- num");
+  // if (num === 'add') {
+  //   previousNum =
+  // }
+  $('th#display').replaceWith('<th colspan="4" id="display"><p align="right">' + stringyNum + '</p></th>');
 }
