@@ -4,6 +4,15 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/calcBrain.js"></script>
+    <script>
+      $(document).ready(function() {
+        $(".btn").on("click", function() {
+          var buttonPressed = $(this).html();
+          runTheNumbers(buttonPressed);
+        });
+      });
+    </script>
+
     <style>
 
       table {
@@ -64,16 +73,5 @@
         <th ><button type="button" class="btn btn-primary btn-lg">equals</button></th>
       </tr>
     </table>
-
-    <script>
-
-    $(document).ready(function() {
-      $(".btn").on("click", function() {
-        var buttonPressed = $(this).html();
-        runTheNumbers(buttonPressed);
-      });
-    });
-
-    </script>
   </body>
 </html>

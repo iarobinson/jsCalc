@@ -20,12 +20,19 @@ function runTheNumbers(buttonPressed) {
   } else if (buttonPressed === '.' && decimalOK()) {
     stringyNum += buttonPressed;
     updateDisplay(stringyNum);
-  } else if (isOperand(buttonPressed) && previousNum === '') {
-    updateDisplay(stringyNum);
-    prepCalc(buttonPressed);
+  } else if (isOperand(buttonPressed)) {
+    if (previousNum === '') {
+      prepCalc(buttonPressed);
+      updateDisplay(previousNum);
+    } else {
+      previousNum = runCalc();
+      stringyNum = '';
+      operand = buttonPressed;
+      updateDisplay(previousNum);
+    }
   } else if (buttonPressed === 'equals') {
     stringyNum = runCalc();
-    previousNum = '';
+    previousNum = stringyNum;
     operand = '';
     updateDisplay(stringyNum);
   } else {
@@ -52,16 +59,12 @@ function runCalc() {
 
 function prepCalc(op) {
   previousNum = stringyNum;
-  operand = op;
   stringyNum = '';
-  updateDisplay(stringyNum);
+  operand = op;
 }
 
 function isOperand(buttonPressed) {
-  if (operandSelected.indexOf(buttonPressed) === -1) {
-    return false;
-  }
-  return true;
+  return operandSelected.indexOf(buttonPressed) !== -1
 }
 
 function isNum(buttonPressed) {
@@ -69,8 +72,5 @@ function isNum(buttonPressed) {
 }
 
 function decimalOK() {
-  if (stringyNum.indexOf('.') === -1) {
-    return true;
-  }
-  return false;
+  return stringyNum.indexOf('.') === -1
 }
