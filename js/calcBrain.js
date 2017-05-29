@@ -7,7 +7,6 @@ function updateDisplay(stringyNum) {
 }
 
 function stringIt(stringyNum, buttonPressed) {
-  // console.log("stringingIt");
   stringyNum += buttonPressed;
   updateDisplay(stringyNum);
 }
@@ -27,3 +26,9 @@ function divide(previousNum, stringyNum) {
 function multiply(previousNum, stringyNum) {
   return parseFloat(previousNum) * parseFloat(stringyNum)
 }
+
+// function doSomeMath(numString, op) {
+//   if (previousNum.length > 0) {
+//     go
+//   }
+// }
