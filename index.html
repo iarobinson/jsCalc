@@ -66,10 +66,13 @@
     </table>
 
     <script>
+
     $(".btn").on("click", function() {
       var buttonPressed = $(this).html();
+      // console.log(buttonPressed, "<-buttonPressed");
+      // console.log(stringyNum, "<- stringyNum");
 
-      if (numbers.indexOf(buttonPressed) !== -1 && stringyNum.split('.').length <= 2) {
+      if (numbers.indexOf(buttonPressed) !== -1) {
         stringyNum += buttonPressed;
         updateDisplay(stringyNum);
       } else if (buttonPressed === 'clear') {
@@ -79,6 +82,7 @@
         console.log('do some math');
       }
     });
+
     </script>
   </body>
 </html>
