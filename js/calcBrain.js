@@ -21,6 +21,7 @@ function runTheNumbers(buttonPressed) {
     stringyNum += buttonPressed;
     updateDisplay(stringyNum);
   } else if (isOperand(buttonPressed)) {
+
     if (previousNum === '') {
       prepCalc(buttonPressed);
       updateDisplay(previousNum);
@@ -30,19 +31,15 @@ function runTheNumbers(buttonPressed) {
       operand = buttonPressed;
       updateDisplay(previousNum);
     }
+
   } else if (buttonPressed === 'equals') {
     stringyNum = runCalc();
-    updateDisplay(stringyNum);
     previousNum = '';
     operand = '';
+    updateDisplay(stringyNum);
   } else {
     updateDisplay(stringyNum);
   }
-
-  console.log(previousNum, "<-previousNum");
-  console.log(operand, "<-operand");
-  console.log(stringyNum, "<-stringyNum");
-  console.log("--------");
 }
 
 function runCalc() {
