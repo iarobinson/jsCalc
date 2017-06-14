@@ -33,10 +33,8 @@ function runTheNumbers(buttonPressed) {
   } else if (buttonPressed === 'equals') {
     stringyNum = runCalc();
     updateDisplay(stringyNum);
-    previousNum = stringyNum;
-    stringyNum = '';
+    previousNum = '';
     operand = '';
-
   } else {
     updateDisplay(stringyNum);
   }
