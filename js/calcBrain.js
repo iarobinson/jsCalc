@@ -16,7 +16,10 @@ function runTheNumbers(buttonPressed) {
   } else if (buttonPressed === 'clear') {
     clearCalc();
   } else if (isOperand(buttonPressed)) {
-    if (previousNum === '') {
+    if (operand !== '') {
+      operand = buttonPressed;
+      updateDisplay(previousNum);
+    } else if (previousNum === '') {
       prepCalc(buttonPressed);
       updateDisplay(previousNum);
     } else {
