@@ -4,7 +4,7 @@ var numbers = '1234567890'.split('');
 var operandSelected = ['add', 'subtract', 'multiply', 'divide'];
 
 function updateDisplay(stringyNum) {
-  $('th#display').replaceWith('<th colspan="4" id="display"><p align="right">' + stringyNum.substring(0, 10) + '</p></th>');
+  $('th#display').replaceWith('<th id="display" colspan="4"><p align="right">' + stringyNum.substring(0, 10) + '</p></th>');
 }
 
 function runTheNumbers(buttonPressed) {
